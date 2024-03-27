@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Real Time Commenting System</title>
+        <link rel="stylesheet" href="/css/style.css">
+    </head>
+<body>
+    <header>
+        <h1 class="heading">
+            Real Time Commenting System
+        </h1>
+    </header>
+    <section>
+        <div class="tech-stack">Tech. Stack:
+            <div class="tech-stack-cards">
+                <div class="tech-stack-card">
+                    <img class="tech-stack-icon" src="/img/socket-io.png" alt="socket-io" onerror="this.src='/img/stack.png';" loading="lazy" decoding="async">
+                    <span class="tech-stack-title">socket.io</span>
+                </div>
+                <div class="tech-stack-card">
+                    <img class="tech-stack-icon" src="/img/node-js.png" alt="node-js" onerror="this.src='/img/stack.png';" loading="lazy" decoding="async">
+                    <span class="tech-stack-title">node.js</span>
+                </div>
+                <div class="tech-stack-card">
+                    <img class="tech-stack-icon" src="/img/express.png" alt="express" onerror="this.src='/img/stack.png';"  loading="lazy" decoding="async">
+                    <span class="tech-stack-title">express</span>
+                </div>
+                <div class="tech-stack-card">
+                    <img class="tech-stack-icon" src="/img/js.png" alt="js" onerror="this.src='/img/stack.png';"  loading="lazy"  decoding="async">
+                    <span class="tech-stack-title">javascript</span>
+                </div>
+                <div class="tech-stack-card">
+                    <img class="tech-stack-icon" src="/img/html.png" alt="html" onerror="this.src='/img/stack.png';"  loading="lazy"  decoding="async">
+                    <span class="tech-stack-title">html</span>
+                </div>
+                <div class="tech-stack-card">
+                    <img class="tech-stack-icon" src="/img/css.png" alt="css" onerror="this.src='/img/stack.png';"  loading="lazy" decoding="async">
+                    <span class="tech-stack-title">css</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="if-logged-in">
+        <div class="typing-animation" id="typingAction"><span id="user-typing"></span> <span class="ellipsis"></span></div>
+
+        <section id="skeleton-comment-input">
+            <div class="comment-box">
+                <form class="comment-bar" onsubmit="postComment(event)" >
+                    <input class="comment-input" type="text" id="input-comment" name="comment" autocomplete="off" onkeyup="typing()" placeholder="Type comment here..." >
+                    <input class="post-btn" type="submit" id="post" value="Post"/>
+                </form> 
+                <button class="toggle-replies" onclick="">Toggle Replies</button>
+            </div>
+        </section>
+
+        <section id="skeleton-comment">
+            <div class="comment-box" id="commented">
+                <form class="comment-bar" id="reply-form" onsubmit="createCommentInput(event)" >
+                    <div class="commenter"></div>
+                    <div class="comment-input">
+                        <div>
+                            <span class="commenter-name" id="commenter-name">commenter-name</span>
+                            <span class="timestamp" id="comment-timestamp">
+                                timestamp
+                            </span>
+                        </div>
+                        <div class="comment" id="comment-msg">
+                            Comment is here...
+                        </div>
+                    </div>
+                    <input class="reply-btn" type="submit" id="reply" value="Reply"/>
+                </form> 
+                <button class="toggle-replies" onclick="startTypingAnimation()">Toggle Replies</button>
+            </div>
+        </section>
+
+        <section id="skeleton-user">
+            <div id="new-user-action"><span id="user-name">Name</span> <span id="user-action">action</span></div>
+        </section>
+        <div id="comments"></div>
+    </section>
+</body>
+<script src="/js/script.js" defer></script>
+<script src="/socket.io/socket.io.js"></script> <!-- Loading from server  -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.30.1/moment.min.js"></script>
+</html>

@@ -1,0 +1,287 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	background-color: aliceblue;
+}
+
+.heading {
+	text-align: center;
+}
+
+.tech-stack {
+	display: flex;
+	flex-direction: column;
+	/* place-content: center; */
+	/* align-items: center; */
+	text-align: center;
+	width: 100%;
+	background-color: rgb(28, 66, 100);
+	padding: 10px;
+	color: aliceblue;
+	font-weight: bold;
+	font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+	font-size: 1.6rem;
+}
+
+.tech-stack-cards {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0 5rem;
+	width: fit-content;
+	justify-content: center;
+	background-color: inherit;
+	/* align-items: center; */
+	width: 100%;
+}
+
+.tech-stack-card {
+	display: flex;
+	padding: 10px;
+	gap: 10px;
+	place-content: center;
+	place-items: center;
+	width: 3rem;
+	max-width: fit-content;
+	cursor: default;
+	box-shadow: none;
+	border-radius: 25px;
+	transition: width 2s ease, box-shadow 1s ease;
+	background-color: transparent;
+}
+
+.tech-stack-card > * {
+	/* background-color: red; */
+}
+
+.tech-stack-title {
+	display: none;
+	font-weight: bold;
+	overflow: hidden;
+	color: rgb(28, 66, 100);
+	font-size: 1.2rem;
+	font-family: Courier, monospace, "Courier New";
+}
+
+.tech-stack-icon {
+	height: 2rem;
+	width: 2rem;
+	border-radius: 50%;
+	object-fit: contain;
+	background-color: transparent;
+}
+
+.tech-stack-card:hover {
+	padding: 10px;
+	background-color: aliceblue;
+	width: 20rem;
+	max-width: fit-content;
+	cursor: pointer;
+	box-shadow: inset 0 -3em 3em rgb(169, 213, 252), 0 0 2px 0 rgb(28, 66, 100), 0.3em 0.3em 1em rgb(28, 66, 100);
+}
+
+.tech-stack-card:not(:hover) {
+	max-width: fit-content;
+	cursor: default;
+	box-shadow: none;
+	background-color: transparent;
+}
+
+.tech-stack-card:hover .tech-stack-title,
+.tech-stack-card:not(:hover) .tech-stack-title {
+	display: block;
+	background-color: transparent;
+}
+
+.tech-stack-card:hover img {
+	animation: rotate 1s;
+}
+
+.tech-stack-card:not(:hover) img {
+	animation: unrotate 1s;
+}
+
+@keyframes rotate {
+	100% {
+		transform: rotate(360deg);
+	}
+}
+
+@keyframes unrotate {
+	100% {
+		transform: rotate(-360deg);
+	}
+}
+
+@media screen and (max-width: 796px) {
+	.tech-stack {
+		border-left: none;
+		background-color: rgb(28, 66, 100);
+		padding: 10px;
+		width: 100%;
+	}
+
+	.tech-stack-cards {
+		width: 100%;
+		gap: 0 3rem;
+	}
+}
+
+.comment-box {
+	display: flex;
+	flex-direction: column;
+	/* background-color: pink; */
+	/* padding: 10px; */
+	gap: 0.5rem;
+}
+
+.comment-bar {
+	display: flex;
+    justify-content: space-evenly;
+	/* background-color: cyan; */
+	padding: 5px;
+	border-radius: 24px;
+}
+
+#skeleton-comment-input .comment-bar{
+	gap: 2rem;
+}
+
+.comment-bar .comment-input {
+	flex: 8;
+	border: none;
+    word-wrap: break-word; /* For older browsers */
+    overflow-wrap: break-word; /* For newer browsers */
+	word-break: break-word;
+}
+
+.toggle-replies {
+	width: 10rem;
+}
+
+.comment-input[type="text"]:focus,
+input[type="text"]:focus,
+input[type="text"]:focus-within, input[type="text"], .comment-input {
+	border: none !important;
+    padding: 10px;
+    word-wrap: break-word; /* For older browsers */
+    overflow-wrap: break-word; /* For newer browsers */
+}
+
+button,
+input[type="submit"] {
+	border-radius: 24px;
+	padding: 10px;
+	background-color: bisque;
+	border: 1px solid bisque;
+	font-weight: 600;
+    cursor: pointer;
+}
+
+#comment {
+	margin: 2rem;
+}
+
+.typing-animation {
+	display: block; /* Ensures the container only takes up the necessary space */
+	position: relative; /* Allows positioning of the ellipsis */
+	color: #00da60;
+	font-weight: bolder;
+}
+
+.ellipsis {
+	display: none;
+}
+
+.ellipsis::after {
+	content: "";
+	display: inline-block;
+	animation: typing 1s infinite alternate;
+}
+
+#skeleton-comment {
+    display: none;
+}
+
+#if-logged-in{
+	display: none;
+}
+
+@keyframes typing {
+	0% {
+		content: " ";
+	}
+	34% {
+		content: " . ";
+	}
+	67% {
+		content: " . . ";
+	}
+	100% {
+		content: " . . . ";
+	}
+}
+
+.commenter {
+    display: flex;
+    place-content: center;
+    place-items: center;
+    background-color: red;
+    border-radius: 50%;
+    padding: 0px auto;
+    width: 2rem;
+	height: 2rem;
+	margin-top: 10px;
+}
+
+.timestamp {
+	/* text-align: right; */
+    font-size: 0.8rem;
+}
+
+.reply-btn, .toggle-replies {
+	display: none;
+}
+
+.commenter-name {
+	display: inline-block;
+	font-weight: bolder;
+	font-size: 0.9rem;
+}
+
+#typingAction {
+	display: block;
+	text-align: center;
+	padding: 0 auto;
+	line-height: 2rem;
+	height: 2rem;
+}
+
+#skeleton-user {
+	display: none;
+	text-align: center;
+}
+
+#new-user-action{
+	color: gray;
+}
+
+#user-notifier {
+	font-weight: bold;
+}
+
+#commented {
+	animation: newComment 0.8s ease forwards;
+}
+
+
+@keyframes newComment {
+	0% {
+		transform: translateY(-30px);
+		opacity: 0;
+	}
+	100%{
+		transform: translate(0px);
+		opacity: 1;
+	}	
+}

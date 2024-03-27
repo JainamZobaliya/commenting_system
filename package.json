@@ -1,0 +1,32 @@
+{
+  "name": "commenting_system",
+  "version": "1.0.0",
+  "description": "A Real-time communication system!",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon server"
+  },
+  "keywords": [
+    "node.js",
+    "express",
+    "socket.io",
+    "js",
+    "html",
+    "css"
+  ],
+  "author": "Jainam Zobaliya",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.19.1",
+    "moment": "^2.30.1",
+    "socket.io": "^4.7.5",
+    "uuid": "^9.0.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.0"
+  },
+  "nodemonConfig": {
+    "ext": "js,html"
+  }
+}

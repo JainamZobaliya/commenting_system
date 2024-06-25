@@ -31,7 +31,7 @@ window.onload = () => {
 			});
 		}
 		socket.emit("connectionEstablised", user); // * NOTE: connection is established when socker = io() is executed!
-	}, 5000);
+	}, 5);
 };
 
 window.onbeforeunload = (event) => {

@@ -15,7 +15,11 @@ const cache = {};
 
 let user = {};
 
-let socket = io();
+// Use base path for Socket.IO connection
+const socketPath = window.BASE_PATH ? window.BASE_PATH : '';
+let socket = io({
+    path: socketPath + '/socket.io'
+});
 
 window.onload = () => {
 	setTimeout(() => {

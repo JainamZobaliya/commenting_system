@@ -1,24 +1,16 @@
-version: '3.8'
+version: "3.8"
 
 services:
-  app:
-    build:
-      context: .
-      dockerfile: Dockerfile
-    container_name: commenting_system
-    ports:
-      - "3000:3000"
-    environment:
-      - PORT=3000
-      - NODE_ENV=production
-    volumes:
-      # Mount public directory for hot-reloading (optional, remove if not needed)
-      - ./public:/app/public
-    restart: unless-stopped
-    networks:
-      - commenting_network
-
-networks:
-  commenting_network:
-    driver: bridge
-
+    commenting_system:
+        build:
+            context: .
+            dockerfile: Dockerfile
+        container_name: commenting_system
+        ports:
+            - "3000:3000" # Expose to host for nginx
+        environment:
+            - PORT=3000
+            - NODE_ENV=production
+        volumes:
+            - ./public:/app/public
+        restart: unless-stopped

@@ -4,11 +4,33 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Real Time Commenting System</title>
-        <link rel="stylesheet" href="/css/style.css">
-        <link rel="apple-touch-icon" sizes="180x180" href="/icon/apple-touch-icon.png">
-        <link rel="icon" type="image/png" sizes="32x32" href="/icon/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="/icon/favicon-16x16.png">
-        <link rel="manifest" href="/icon/site.webmanifest">
+        <script>
+            // Detect base path dynamically
+            (function() {
+                const path = window.location.pathname;
+                let basePath = '/';
+                
+                // Check if we're under /rtcs or /real-time_commenting-system
+                if (path.startsWith('/rtcs')) {
+                    basePath = '/rtcs';
+                } else if (path.startsWith('/real-time_commenting-system')) {
+                    basePath = '/real-time_commenting-system';
+                }
+                
+                // Set base tag
+                const base = document.createElement('base');
+                base.href = basePath + '/';
+                document.head.appendChild(base);
+                
+                // Store base path for Socket.IO
+                window.BASE_PATH = basePath;
+            })();
+        </script>
+        <link rel="stylesheet" href="css/style.css">
+        <link rel="apple-touch-icon" sizes="180x180" href="icon/apple-touch-icon.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="icon/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="icon/favicon-16x16.png">
+        <link rel="manifest" href="icon/site.webmanifest">
     </head>
 <body>
     <header>
@@ -20,27 +42,27 @@
         <div class="tech-stack">Tech. Stack:
             <div class="tech-stack-cards">
                 <div class="tech-stack-card">
-                    <img class="tech-stack-icon" src="/img/socket-io.png" alt="socket-io" onerror="this.src='/img/stack.png';" loading="lazy" decoding="async">
+                    <img class="tech-stack-icon" src="img/socket-io.png" alt="socket-io" onerror="this.src='img/stack.png';" loading="lazy" decoding="async">
                     <span class="tech-stack-title">socket.io</span>
                 </div>
                 <div class="tech-stack-card">
-                    <img class="tech-stack-icon" src="/img/node-js.png" alt="node-js" onerror="this.src='/img/stack.png';" loading="lazy" decoding="async">
+                    <img class="tech-stack-icon" src="img/node-js.png" alt="node-js" onerror="this.src='img/stack.png';" loading="lazy" decoding="async">
                     <span class="tech-stack-title">node.js</span>
                 </div>
                 <div class="tech-stack-card">
-                    <img class="tech-stack-icon" src="/img/express.png" alt="express" onerror="this.src='/img/stack.png';"  loading="lazy" decoding="async">
+                    <img class="tech-stack-icon" src="img/express.png" alt="express" onerror="this.src='img/stack.png';"  loading="lazy" decoding="async">
                     <span class="tech-stack-title">express</span>
                 </div>
                 <div class="tech-stack-card">
-                    <img class="tech-stack-icon" src="/img/js.png" alt="js" onerror="this.src='/img/stack.png';"  loading="lazy"  decoding="async">
+                    <img class="tech-stack-icon" src="img/js.png" alt="js" onerror="this.src='img/stack.png';"  loading="lazy"  decoding="async">
                     <span class="tech-stack-title">javascript</span>
                 </div>
                 <div class="tech-stack-card">
-                    <img class="tech-stack-icon" src="/img/html.png" alt="html" onerror="this.src='/img/stack.png';"  loading="lazy"  decoding="async">
+                    <img class="tech-stack-icon" src="img/html.png" alt="html" onerror="this.src='img/stack.png';"  loading="lazy"  decoding="async">
                     <span class="tech-stack-title">html</span>
                 </div>
                 <div class="tech-stack-card">
-                    <img class="tech-stack-icon" src="/img/css.png" alt="css" onerror="this.src='/img/stack.png';"  loading="lazy" decoding="async">
+                    <img class="tech-stack-icon" src="img/css.png" alt="css" onerror="this.src='img/stack.png';"  loading="lazy" decoding="async">
                     <span class="tech-stack-title">css</span>
                 </div>
             </div>
@@ -87,7 +109,7 @@
         <div id="comments"></div>
     </section>
 </body>
-<script src="/js/script.js" defer></script>
-<script src="/socket.io/socket.io.js"></script> <!-- Loading from server  -->
+<script src="js/script.js" defer></script>
+<script src="socket.io/socket.io.js"></script> <!-- Loading from server  -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.30.1/moment.min.js"></script>
 </html>

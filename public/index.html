@@ -6,21 +6,26 @@
         <title>Real Time Commenting System</title>
         <script>
             // Detect base path dynamically
+            // Works for both local development (direct Express) and deployed (behind nginx)
             (function() {
                 const path = window.location.pathname;
                 let basePath = '/';
                 
-                // Check if we're under /rtcs or /real-time_commenting-system
+                // Check if we're under /rtcs or /real-time_commenting-system (deployed behind nginx)
+                // When running locally, path will be '/' so basePath stays '/'
                 if (path.startsWith('/rtcs')) {
                     basePath = '/rtcs';
                 } else if (path.startsWith('/real-time_commenting-system')) {
                     basePath = '/real-time_commenting-system';
                 }
+                // If path is just '/', basePath remains '/' (local development)
                 
-                // Set base tag
-                const base = document.createElement('base');
-                base.href = basePath + '/';
-                document.head.appendChild(base);
+                // Set base tag (only if we have a non-root base path)
+                if (basePath !== '/') {
+                    const base = document.createElement('base');
+                    base.href = basePath + '/';
+                    document.head.appendChild(base);
+                }
                 
                 // Store base path for Socket.IO
                 window.BASE_PATH = basePath;

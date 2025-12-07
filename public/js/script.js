@@ -16,10 +16,17 @@ const cache = {};
 let user = {};
 
 // Use base path for Socket.IO connection
-const socketPath = window.BASE_PATH ? window.BASE_PATH : '';
-let socket = io({
-    path: socketPath + '/socket.io'
-});
+// When BASE_PATH is '/', use default Socket.IO path
+// When BASE_PATH is '/rtcs' or '/real-time_commenting-system', use that as prefix
+let socket;
+if (window.BASE_PATH && window.BASE_PATH !== '/') {
+    socket = io({
+        path: window.BASE_PATH + '/socket.io'
+    });
+} else {
+    // Default Socket.IO connection for local development
+    socket = io();
+}
 
 window.onload = () => {
 	setTimeout(() => {
